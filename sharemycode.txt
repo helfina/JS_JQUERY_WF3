@@ -1,0 +1,20 @@
+ROLES DES LANGAGES :
+--------------------
+
+FRONTEND : 
+----------
+HTML :  Structure d'une page (régions, blocs, médias ...)
+CSS  :  Mise en forme (couleurs, tailles, bordures ...)
+JS   :  Javascript (animations, intéractivité ...)
+
+BACKEND :
+---------
+PHP  : Fonctionnalités (formulaires, templating, sécurité ...)
+SQL  : MySQL communication avec les BDD (enregistrement, modification, suppression, récupération de données)
+
+
+SOLUTIONS POUR UN DEVELOPPEUR :
+-------------------------------
+- From scratch : le développeur part de zéro (liberté totale : temps de dev très long)
+- Framework    : on utilise du framework (temps de dev réduit)
+- CMS          : Content Managing System (temps de dev très rapide)
