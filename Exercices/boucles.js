@@ -61,10 +61,16 @@ for (let i = 0; i < 100; i++) {
             elementExercice4.innerHTML += i + ' ';
             break;
     }
-//if(i % 10 == 0){
-// }
+    /* solution modulo
+        if(i % 10 == 0){
+            elementExercice4.innerHTML += '<span style="color: red">' + i + '</span> ';
+        }else{
+             elementExercice4.innerHTML += i + ' ';
+        }
+    */
 }
 
+    
 // exercice 5 :
 let elementExercice5 = document.getElementById('exercice5');
 let ul = '<ul>';
