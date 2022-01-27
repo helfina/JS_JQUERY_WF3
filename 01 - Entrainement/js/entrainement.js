@@ -511,7 +511,7 @@ while( img < 5){
 }
 contenuChapitre8.innerHTML += '<hr>';
 
-/*corriger*/
+/*corriger======================================================================================================
 // 01
 contenuChapitre8.innerHTML += '<img src="image1.jpg" width="210">';
 contenuChapitre8.innerHTML += '<hr>';
@@ -543,7 +543,8 @@ while(i < 6) {
 }
 contenuChapitre8.innerHTML += '<hr>';
 
-//==============================================================================================================================
+//==============================================================================================================================*/
+
 /*
     09 : Fonctions prédéfinies (fonctions globales)
 */
@@ -557,3 +558,351 @@ let contenuChapitre9 = document.getElementById('contenuChapitre9');
 // parseInt() permet de transformer une valeur numérique de type string en type number (uniquement valeur entière, ça enlevera les décimales s'il y en a)
 
 // parseFloat() permet de transformer une valeur numérique de type string en type number (avec les décimales)
+
+let chaine = '123';
+contenuChapitre9.innerHTML += chaine + 10; // affiche 12310 car du fait que la variable soit une chaine de caractère (string), le plus fait une concaténation.
+// Ce souci de concaténation n'est pas présent pour les autres opérateurs !
+contenuChapitre9.innerHTML += '<hr>';
+// Pour régler ce souci, nous pouvons parser l'information (on change l'information en type number)
+
+contenuChapitre9.innerHTML += parseInt(chaine) + 10; // affiche 133
+contenuChapitre9.innerHTML += '<hr>';
+contenuChapitre9.innerHTML += typeof parseInt(chaine) + '<hr>'; // number
+
+// parseInt() ne prendra pas en copmpte les décimales
+contenuChapitre9.innerHTML += parseInt('12.98');
+
+contenuChapitre9.innerHTML += '<hr>';
+
+// parseFloat() pour avoir les décimales
+contenuChapitre9.innerHTML += parseFloat('12.98');
+contenuChapitre9.innerHTML += '<hr>';
+contenuChapitre9.innerHTML += `Valeur avec le parseFloat : ${parseFloat('12.98') * 2} <br>`;
+
+/*
+    10 : Fonctions utilisateur
+*/
+let contenuChapitre10 = document.getElementById('contenuChapitre10');
+
+// déclaration et exécuter
+
+// fonction toute simple renvoyant du texte
+// déclaration :
+function maFonction() {
+    // return représente la réponse de la fonction
+    return 'Bonjour à tous<br>';
+}
+// exécution :
+contenuChapitre10.innerHTML += maFonction();
+contenuChapitre10.innerHTML += maFonction();
+contenuChapitre10.innerHTML += maFonction();
+
+contenuChapitre10.innerHTML += separateur(); // il est possible d'éxécuter une fonction avant sa déclaration.
+// Effectivement, le navigateur va d'abord faire une pré lecture du code et isoler toutes les fonctions. Ensuite le code est exécuter et les fonctions sont déjà connues.
+
+// fonction avec argument
+function direBonjour(qui) {
+    return 'Bonjour ' + qui + ', bienvenue sur notre site !<br>';
+}
+
+// Si une fonction attend un ou des argument(s) nous sommes obligé de les fournir
+contenuChapitre10.innerHTML += direBonjour(); // undefined si l'argument n'est pas fourni
+contenuChapitre10.innerHTML += direBonjour('Mathieu');
+let pseudo3 = 'Admin'
+contenuChapitre10.innerHTML += direBonjour(pseudo3);
+
+// let pseudo4 = prompt('Quel est votre pseudo');
+/*
+if(pseudo4) {
+    contenuChapitre10.innerHTML += direBonjour(pseudo4);
+}
+*/
+// fonction sans argument permettant de renvoyer 3 hr
+function separateur () {
+    return '<hr><hr><hr>';
+}
+contenuChapitre10.innerHTML += separateur();
+
+// fonction permettant d'afficher la saison et la temperature
+function meteo(saison, temperature) {
+
+    var debut = 'Nous sommes en ' + saison;
+
+    var suite = ', et il fait ' + temperature + ' degré(s).';
+
+    return debut + suite + '<hr>';
+}
+contenuChapitre10.innerHTML += meteo('été', 32);
+contenuChapitre10.innerHTML += meteo('printemps', 18);
+contenuChapitre10.innerHTML += meteo('hiver', 0);
+contenuChapitre10.innerHTML += meteo('automne', 7);
+
+// Exercice :
+// selon la valeur de la saison nous voulons l'article "en" ou "au"
+// selon la valeur de temperature on met le "s" ou pas à degré mais on ne veut pas les parenthèse (-1, 0, 1 : pas de s)
+function meteo2(saison, temperature) {
+
+    if(saison === 'printemps'){
+        var debut = 'Nous sommes au ' + saison;
+    }else{
+        var debut = 'Nous sommes en ' + saison;
+    }
+
+    if (temperature === -1 || temperature === 0 || temperature === 1){
+        var suite = ', et il fait ' + temperature + ' degré.';
+    }else {
+        var suite = ', et il fait ' + temperature + ' degrés.';
+    }
+    return '<hr>'+ debut + suite + '<hr>';
+
+}
+
+contenuChapitre10.innerHTML += meteo2('été', 32);
+contenuChapitre10.innerHTML += meteo2('printemps', 18);
+contenuChapitre10.innerHTML += meteo2('hiver', 0);
+contenuChapitre10.innerHTML += meteo2('automne', 7);
+
+/*
+* // Exercice :
+// selon la valeur de la saison nous voulons l'article "en" ou "au"
+// selon l avaleur de temperature on met le "s" ou pas à degré mais on ne veut pas les parenthèse (-1, 0, 1 : pas de s)
+function meteo2(saison, temperature) {
+
+    if(saison == 'printemps') {
+        var debut = 'Nous sommes au ' + saison;
+    } else {
+        var debut = 'Nous sommes en ' + saison;
+    }
+
+    // if(temperature == 0 || temperature == -1 || temperature == 1) {
+    if(temperature > -2 && temperature < 2) {
+        var suite = ', et il fait ' + temperature + ' degré.';
+    } else {
+        var suite = ', et il fait ' + temperature + ' degrés.';
+    }
+
+    return debut + suite + '<hr>';
+
+}
+contenuChapitre10.innerHTML += meteo2('été', 32);
+contenuChapitre10.innerHTML += meteo2('printemps', 18);
+contenuChapitre10.innerHTML += meteo2('hiver', 0);
+contenuChapitre10.innerHTML += meteo2('automne', 7);
+
+contenuChapitre10.innerHTML += separateur();
+
+function meteo3(saison, temperature) {
+    var article = 'en';
+    var s = 's';
+    if(saison == 'printemps') {
+        article = "au";
+    }
+    // Math.abs() nous renvoie la valeur positive d'une valeur négative exemple la valeur absolue de -1 sera 1
+    // if(Math.abs(temperature) < 2) {
+    if(temperature > -2 && temperature < 2) {
+        s = '';
+    }
+    return 'Nous sommes ' + article + ' ' + saison + ' et il fait ' + temperature + ' degré' + s + ' <hr>';
+}
+contenuChapitre10.innerHTML += meteo3('été', 32);
+contenuChapitre10.innerHTML += meteo3('printemps', 18);
+contenuChapitre10.innerHTML += meteo3('hiver', 0);
+contenuChapitre10.innerHTML += meteo3('automne', 7);
+
+contenuChapitre10.innerHTML += separateur();
+
+* */
+
+// Avec un argument facultatif
+function appliqueTVA(prix, taux = 20) {
+    return 'Le prix ttc pour ' + prix + ' € HT avec un taux de ' + taux + '% est égal à ' + (prix * (1+(taux/100))) + ' € TTC<hr>';
+}
+contenuChapitre10.innerHTML += appliqueTVA(1000);
+contenuChapitre10.innerHTML += appliqueTVA(1000, 5.5);
+// Sur cette fonction, le fait de dire que l'argument taux = 20 nous permet de la rendre facultatif.
+// Si le deuxième argument n'est pas fourni lors de l'appel de la fonction, le deuxième argument aura sa valeur par defaut (20)
+// Si on fourni deux argument, le deuxième écrase la valeur par défaut.
+
+
+/*
+    11 : Tableau de données ARRAY
+*/
+let contenuChapitre11 = document.getElementById('contenuChapitre11');
+// array est un type de données
+// outil de base : la variable simple : contient une seule valeur
+// outil amélioré : une variable de type tableau array : contient plusieurs valeurs
+
+// Un tableau array est toujours composé de deux colonnes uniquement
+// une colonne contenant l'indice (numéro)
+// une colonne contenant la valeur
+
+// déclaration (littérale) :
+let tabFruits = ['bananes', 'fraises', 'pommes', 'poires', 'kiwis'];
+
+console.log(tabFruits);
+/*
+0: "bananes"
+1: "fraises"
+2: "pommes"
+3: "poires"
+4: "kiwis"
+*/
+
+// les indices se génèrent tout seul, en commençant toujours par 0
+contenuChapitre11.innerHTML += tabFruits + separateur(); // affiche les valeurs
+
+// Pour piocher un des éléments du tableau, nous pouvons appeler l'indice entre crochet []
+contenuChapitre11.innerHTML += tabFruits[1] + '<br>';
+
+// Il est possible de changer une des valeurs :
+tabFruits[4] = 'ananas';
+
+console.log(tabFruits);
+
+// il est possible de rajouter des éléments :
+// en connaissant l'indice
+tabFruits[5] = 'cerises';
+
+// en demandant à js de le faire lui-même
+tabFruits.push('grenades', 'abricots', 'tomates');
+console.log(tabFruits);
+/*
+0: "bananes"
+1: "fraises"
+2: "pommes"
+3: "poires"
+4: "ananas"
+5: "cerises"
+6: "grenades"
+7: "abricots"
+8: "tomates"
+*/
+
+// il est possible de rajouter en debut du tableau
+tabFruits.unshift('pêches');
+console.log(tabFruits);
+
+// pour ordonner les valeurs en ordre alphabétique
+tabFruits.sort();
+console.log(tabFruits);
+
+// pour connaitre le nombre d'élément présent dans le tableau : length
+contenuChapitre11.innerHTML += 'Nombre d\'élément dans la tableau tabFruits : ' + tabFruits.length + '<hr>';
+
+contenuChapitre11.innerHTML += separateur();
+
+for (var i = 0; i < tabFruits.length; i++) {
+    contenuChapitre11.innerHTML += '- ' + tabFruits[i] + '<br>';
+}
+
+contenuChapitre11.innerHTML += separateur();
+
+let listeFruit = '<ul>';
+for (var i = 0; i < tabFruits.length; i++) {
+    listeFruit += '<li>' + tabFruits[i] + '</li>';
+}
+listeFruit += '</ul>';
+
+contenuChapitre11.innerHTML += listeFruit;
+
+// Tableau multidimensionnel
+let tabPersonnages = [
+    ['Arthur', 'Kaamelott', 'roi', 40],
+    ['Perceval', 'Kaamelott', 'chevalier', 35],
+    ['Lancelot', 'Kaamelott', 'chevalier', 28],
+    ['Guenievre', 'Kaamelott', 'reine', 38]
+];
+console.log(tabPersonnages);
+
+contenuChapitre11.innerHTML += tabPersonnages[2][0];
+// Pour piocher dans un sous tableau array : on appelle une succession de crochet pour chaque sous niveau
+
+
+/*
+    12 : Les objets globaux
+*/
+let contenuChapitre12 = document.getElementById('contenuChapitre12');
+
+// Dans le langage javascript on dit que tout est objet.
+// effectivement, dès que l'on manipule une valeur, cette valeur possède les outils de l'objet global correspondant à son type.
+// Par exemple : si on manipule une chaine de caractère, cette chaine possède tout de suite tout les outils de l'objet global "String"
+// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects
+
+// En terme d'outil pour le dev :
+// 1 : la variable simple : une seule valeur
+// 2 : variable array : un ensemble de valeur
+// 3 : variable objet : un ensemble de valeur (attributs ou propriétés de l'objet) ainsi que des fonctions (methodes de l'objet)
+
+// String :
+contenuChapitre12.innerHTML += '<b>Objet string </b><hr>';
+
+let phrase = 'Bonjour je m\'appelle Marie, nous sommes jeudi';
+contenuChapitre12.innerHTML += phrase + '<br>';
+
+// indexOf()
+// indexOf() est une methode des objets string permettant de connaitre la position d'une chaine de caractère dans une autre chaine.
+
+contenuChapitre12.innerHTML += 'position du mot Marie dans la variable phrase : ' + phrase.indexOf('Marie') + '<br>';
+
+let email = 'mail@mail.fr';
+contenuChapitre12.innerHTML += 'position du caractère @ dans la variable email : ' + email.indexOf('@') + '<br>';
+// Affiche 4 car la première position est la position 0
+
+// substring()
+// permet de découper une chaine, deux argument à fournir :
+// substring(positionDepart, positionFin)
+let positionDepart = phrase.indexOf('Marie');
+// length pour connaitre la longueur d'une chaine de caractère
+let taille = 'Marie'.length;
+let positionFin = positionDepart + taille;
+
+// on découpe la chaine afin d'afficher Marie uniquement
+contenuChapitre12.innerHTML += phrase.substring(positionDepart, positionFin) + '<br>';
+
+// EXERCICE 1 :
+// faire un prompt pour demander à l'utilisateur de choisir une pseudo, ensuite via un if, tester la taille du pseudo.
+// Le pseudo doit avoir entre 4 et 14 caractères inclus
+// Si la taille du pseudo est correcte, on affiche 'Bonjour "pseudo"' Sinon on affiche un message d'erreur en rouge du genre "Attention, le pseudo doit avoir entre 4 et 14 caractères inclus".
+
+// toLowerCase()
+// methode permettant de passer une chaine en minuscule
+// toUpperCase()
+// methode permettant de passer une chaine en majuscule
+contenuChapitre12.innerHTML += 'hello'.toUpperCase() + '<br>';
+contenuChapitre12.innerHTML += 'BONJOUR'.toLowerCase() + '<br>';
+
+// EXERCICE 2 :
+// Afficher le mot webforce avec la première lettre en majuscule en utilisant ces methodes
+// Pour aller plus loin : faire une fonction permettant de passer la premier lettre d'un argument fourni en majuscule.
+
+contenuChapitre12.innerHTML += separateur();
+
+// Objet Date
+// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+let aujourdhui = new Date();
+contenuChapitre12.innerHTML += aujourdhui + '<br>';
+
+// pour avvoir l'année en 4 chiffres : getFullYear()
+// Pour avoir le numéro du jour dans le mois : getDate()
+// pour avoir le numéro du mois dans l'année : getMonth() Attention, janvier est 0
+
+
+
+let jour = aujourdhui.getDate();
+if(jour < 10) {
+    jour = '0' + jour;
+}
+let mois = aujourdhui.getMonth();
+mois += 1; // on rajoute 1 sur le mois car getMonth nous renvoie un chiffre entre 0 et 11
+if(mois < 10) {
+    mois = '0' + mois;
+}
+let annee = aujourdhui.getFullYear();
+contenuChapitre12.innerHTML += 'Nous sommes le : ' + jour + '/' + mois + '/' + annee;
+
+
+/*
+    13 : Les objets
+*/
+let contenuChapitre13 = document.getElementById('contenuChapitre13');
