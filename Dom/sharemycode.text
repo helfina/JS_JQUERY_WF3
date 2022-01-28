@@ -31,6 +31,7 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 * {
     font-family: 'Roboto', sans-serif;
+    transition: all 1s ease;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
@@ -58,5 +59,43 @@ h1 {
     width: 100px;
     height: 100px;
     background-color: darkslategray;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+#blockImage1 {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    height: 400px;
+    overflow: hidden;
+}
+#blockImage1 img {
+    display: block;
+    width: 600px;
+    height: 400px;
+    position: relative;
+    top: 0;
+}
+
+#blockImage2 {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    height: 400px;
+    overflow: hidden;
+}
+#blockImage2 img {
+    display: block;
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+#blockImage2 img:first-child {
+    opacity: 1;
 }
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

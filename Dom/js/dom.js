@@ -36,11 +36,73 @@ console.log(carre);
 console.log(typeof carre);
 console.log('Element : ' + carre);
 
-carre.addEventListener('click', function() {
+carre.addEventListener('click', function () {
     //carre.title = 'hello'; // info bulle qui s'affiche qui au survol (en coup d'arret) sur le carre
-    carre.style.backgroundColor = 'fuchsia';
+    //carre.style.backgroundColor = 'fuchsia';
+
+    // Exercice :
+    // actuellement au click la couleur change en fuchsia
+    // faire en sorte qu'au premier click on change en fuchsia, si on reclick, on change sur une autre couleur et un nouveau click fera revenir à la couleur originale.
+    let couleur = carre.style.backgroundColor;
+    if (couleur == 'darkslategray') {
+        carre.style.backgroundColor = 'fuchsia';
+        carre.style.left = '100px';
+    } else if (couleur == 'fuchsia') {
+        carre.style.backgroundColor = 'plum';
+        carre.style.borderRadius = '50%';
+    } else {
+        carre.style.backgroundColor = 'darkslategray';
+        carre.style.left = '0';
+        carre.style.borderRadius = 0;
+    }
+
+});
+
+// EXERCICE :
+// Faire un nouveau div de même mise en forme
+// Lors du premier click, le div doit partir de 100px vers la droite
+// Click suivant le div pars de 100px vers le bas
+// Click suivant on revient à gauche de 100px
+// Click suivant on remonte pour revenir à la position initiale.
+
+
+let imagesBlock1 = document.querySelectorAll('#blockImage1 img');
+console.log(imagesBlock1);
+console.log(typeof imagesBlock1);
+console.log('Elements : ' + imagesBlock1);
+
+document.getElementById('blockImage1').addEventListener('mouseenter', function () {
+    imagesBlock1[0].style.top = '-400px';
+    imagesBlock1[1].style.top = '-400px';
+});
+
+// Faire le mouvement inverse : evenement : mouseleave
+document.getElementById('blockImage1').addEventListener('mouseleave', function () {
+    imagesBlock1[0].style.top = '0';
+    imagesBlock1[1].style.top = '0';
 });
 
 
+//
+function carousel() {
+    let imageCarousel = document.querySelectorAll('#blockImage2 img');
+    console.log(imageCarousel);
+    if(imageCarousel[0].style.opacity == 1) {
+        imageCarousel[0].style.opacity = 0;
+        imageCarousel[1].style.opacity = 1;
+    } else if(imageCarousel[1].style.opacity == 1) {
+        imageCarousel[1].style.opacity = 0;
+        imageCarousel[2].style.opacity = 1;
+    } else if(imageCarousel[2].style.opacity == 1) {
+        imageCarousel[2].style.opacity = 0;
+        imageCarousel[3].style.opacity = 1;
+    } else {
+        imageCarousel[3].style.opacity = 0;
+        imageCarousel[0].style.opacity = 1;
+    }
+}
 
+// setInterval() permet de répéter une fonctio,n selon un timer en milliseconde
+setInterval(carousel, 3000);
 
+document.getElementById('blockImage2').addEventListener('click', carousel);
