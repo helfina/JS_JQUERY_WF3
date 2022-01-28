@@ -1,0 +1,31 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    transition: all 1s ease;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: royalblue;
+}
+.conteneur {
+    max-width: 1200px;
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+}
+h1 {
+    padding: 20px;
+    background-color: royalblue;
+    color: white;
+    text-align: center;
+}
+
+#carre {
+    margin: 100px;
+    width: 100px;
+    height: 100px;
+    background-color: darkslategray;
+}
