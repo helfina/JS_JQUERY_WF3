@@ -919,7 +919,7 @@ let contenuChapitre13 = document.getElementById('contenuChapitre13');
 // pour créer un objet on utilise les accolades {}
 
 let perso = {
-    // propriété
+    // propriétés
     nom : 'Arthur',
     profession : "Roi",
     adresse : 'Kaamelott',
@@ -938,5 +938,9 @@ console.log(perso);
 contenuChapitre13.innerHTML += perso.nom + '<br>'; // pour piocher on utilise le point ou les crochets
 contenuChapitre13.innerHTML += perso['nom'] + '<br>'; // deux écritures possibles
 contenuChapitre13.innerHTML += perso.competences[2] + '<br>'; //
+
+contenuChapitre13.innerHTML += perso.age + '<br>';
+perso.changerAge() + '<br>';
+contenuChapitre13.innerHTML += perso.age + '<br>';
 
 contenuChapitre13.innerHTML += typeof perso;
