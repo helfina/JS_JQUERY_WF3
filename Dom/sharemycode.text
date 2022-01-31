@@ -238,5 +238,10 @@ function carousel() {
 
 // setInterval() permet de répéter une fonctio,n selon un timer en milliseconde
 setInterval(carousel, 3000);
+/*
+La fonction passée en premier argument peut aussi s'écrire en string avec les parenthèse :
+setInterval('carousel()', 3000);
+En revanche, ce n'est pas une bonne pratique, car la fonction va être évaluer avec eval() (eval() traite du texte comme du code et l'exécute). C'est une faille de sécurité si un utilisateur venait à écrire lui même son code
+*/
 
 document.getElementById('blockImage2').addEventListener('click', carousel);

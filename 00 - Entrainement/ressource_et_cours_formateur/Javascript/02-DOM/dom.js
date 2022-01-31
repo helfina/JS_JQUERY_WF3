@@ -4,7 +4,7 @@ DOM : Document Object Model
 Le DOM rend disponible toutes les balises HTML du document (body, section, p, div ...), mais également tous les attributs html (id, class, href, src, title ...) mais aussi les évènements (click, dblclick, mouseenter, mouseout, load...)
 
 D'abord il faut sélectionner l'élément ou les éléments html :
-Selecteur :
+Selecteur : 
 -----------
 document.getElementById('unId') : selectionne un élément selon son id, on récupère un élément unique
 document.getElementsByClassName('maClasse') : selectionne un ou des éléments selon la classe, on récupère une collection (array)
@@ -31,60 +31,38 @@ document.getElementById('unId').addEventListener('click', function() {
 
 */
 
-let carre = document.getElementById('carre');
-console.log(carre);
-console.log(typeof carre);
-console.log('Element : ' + carre);
+let carre1 = document.getElementById('carre');
+console.log(carre1);
+console.log(typeof carre1);
+console.log('Element : ' + carre1);
 
-carre.addEventListener('click', function () {
-    //carre.title = 'hello'; // info bulle qui s'affiche qui au survol (en coup d'arret) sur le carre
-    //carre.style.backgroundColor = 'fuchsia';
+carre1.addEventListener('click', function() {
+    // carre1.title = 'Hello';
+    // carre1.style.backgroundColor = 'fuchsia';
+    console.log(carre1.style.backgroundColor);
+
+    // Dans la fonction d'un évènement, this représente l'élément html ayant reçu l'évènement.
+    console.log(this.style.backgroundColor);
 
     // Exercice :
     // actuellement au click la couleur change en fuchsia
     // faire en sorte qu'au premier click on change en fuchsia, si on reclick, on change sur une autre couleur et un nouveau click fera revenir à la couleur originale.
-    let couleur = carre.style.backgroundColor;
-    if (couleur == 'darkslategray') {
-        carre.style.backgroundColor = 'fuchsia';
-        carre.style.left = '100px';
-    } else if (couleur == 'fuchsia') {
-        carre.style.backgroundColor = 'plum';
-        carre.style.borderRadius = '50%';
-    } else {
-        carre.style.backgroundColor = 'darkslategray';
-        carre.style.left = '0';
-        carre.style.borderRadius = 0;
-    }
+    let couleur = carre1.style.backgroundColor;
 
-});
-
-// EXERCICE :
-// Faire un nouveau div de même mise en forme
-// Lors du premier click, le div doit partir de 100px vers la droite
-// Click suivant le div pars de 100px vers le bas
-// Click suivant on revient à gauche de 100px
-// Click suivant on remonte pour revenir à la position initiale.
-
-
-let carre1 = document.getElementById('carre1');
-carre1.addEventListener('click', function () {
-    if(carre1.style.top == 0 && carre1.style.left == 0){
+    if(couleur == 'darkslategray') {
+        carre1.style.backgroundColor = 'fuchsia';
         carre1.style.left = '100px';
-    }else if(carre1.style.top == 0 && carre1.style.left == '100px'){
-        carre1.style.top = '100px';
-    }else if(carre1.style.top == '100px' && carre1.style.left == '100px'){
-        carre1.style.left = 0;
-    }else if(carre1.style.top == '100px' && carre1.style.left == '0px'){
-        carre1.style.top = 0;
-    }else if(carre1.style.top == '0px' && carre1.style.left == '0px'){
-        carre1.style.top = 0;
-        carre1.style.left = 0;
-    }else{
-        alert('une erreure c\'est produite');
+        carre1.style.borderRadius = '0 50% 50% 0';
+    } else if(couleur == 'fuchsia') {
+        carre1.style.backgroundColor = 'plum';
+        carre1.style.borderRadius = '50%';
+    } else {
+        carre1.style.backgroundColor = 'darkslategray';
+        carre1.style.left = '0';
+        carre1.style.borderRadius = 0;
     }
 });
 
-/* correction
 // EXERCICE :
 // Faire un nouveau div de même mise en forme
 // Lors du premier click, le div doit partir de 100px vers la droite
@@ -116,7 +94,9 @@ carre2.addEventListener('click', function() {
         carre2.style.top = 0;
     }
 });
- */
+
+
+
 
 
 let imagesBlock1 = document.querySelectorAll('#blockImage1 img');
@@ -124,22 +104,22 @@ console.log(imagesBlock1);
 console.log(typeof imagesBlock1);
 console.log('Elements : ' + imagesBlock1);
 
-document.getElementById('blockImage1').addEventListener('mouseenter', function () {
+document.getElementById('blockImage1').addEventListener('mouseenter', function() {
     imagesBlock1[0].style.top = '-400px';
     imagesBlock1[1].style.top = '-400px';
 });
 
 // Faire le mouvement inverse : evenement : mouseleave
-document.getElementById('blockImage1').addEventListener('mouseleave', function () {
+document.getElementById('blockImage1').addEventListener('mouseleave', function() {
     imagesBlock1[0].style.top = '0';
     imagesBlock1[1].style.top = '0';
 });
 
 
-//
+// 
 function carousel() {
     let imageCarousel = document.querySelectorAll('#blockImage2 img');
-    console.log(imageCarousel);
+    // console.log(imageCarousel);
     if(imageCarousel[0].style.opacity == 1) {
         imageCarousel[0].style.opacity = 0;
         imageCarousel[1].style.opacity = 1;
@@ -155,8 +135,7 @@ function carousel() {
     }
 }
 
-// setInterval() permet de répéter une fonctio,n selon un timer en milliseconde
-
+// setInterval() permet de répéter une fonction selon un timer en milliseconde
 setInterval(carousel, 3000);
 /*
 La fonction passée en premier argument peut aussi s'écrire en string avec les parenthèse :
@@ -167,9 +146,10 @@ En revanche, ce n'est pas une bonne pratique, car la fonction va être évaluer 
 
 document.getElementById('blockImage2').addEventListener('click', carousel);
 
-//  ! TODO EXERCICE :
+
+// EXERCICE :
 // syntaxes possibles pour une couleur :
 // en toute lettre : red | brown | black | green ...
 // hexadécimale (6 caractères : chiffres et lettres de a jusqu'à f) avec un # : #54ef42 ...
-// rgb() : 3 valeurs numériques entre 0 et 255 : rgb(24, 142, 89) ...
+// rgb() : 3 valeurs numériques entre 0 et 255 : rgb(24, 142, 89) ... 
 // Faire en sorte que le body ai une couleur aléatoire en arrivant sur la page.
