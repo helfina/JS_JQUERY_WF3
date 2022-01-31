@@ -66,6 +66,59 @@ carre.addEventListener('click', function () {
 // Click suivant on remonte pour revenir à la position initiale.
 
 
+let carre1 = document.getElementById('carre1');
+carre1.addEventListener('click', function () {
+    if(carre1.style.top == 0 && carre1.style.left == 0){
+        carre1.style.left = '100px';
+    }else if(carre1.style.top == 0 && carre1.style.left == '100px'){
+        carre1.style.top = '100px';
+    }else if(carre1.style.top == '100px' && carre1.style.left == '100px'){
+        carre1.style.left = 0;
+    }else if(carre1.style.top == '100px' && carre1.style.left == '0px'){
+        carre1.style.top = 0;
+    }else if(carre1.style.top == '0px' && carre1.style.left == '0px'){
+        carre1.style.top = 0;
+        carre1.style.left = 0;
+    }else{
+        alert('une erreure c\'est produite');
+    }
+});
+
+/* correction
+// EXERCICE :
+// Faire un nouveau div de même mise en forme
+// Lors du premier click, le div doit partir de 100px vers la droite
+// Click suivant le div pars de 100px vers le bas
+// Click suivant on revient à gauche de 100px
+// Click suivant on remonte pour revenir à la position initiale.
+// Pas de changement de couleur, les if doivent être sur les positions.
+let carre2 = document.querySelector('#carre2');
+console.log(carre2);
+console.log('Position left : ' + carre2.style.left);
+console.log(typeof carre2);
+console.log('Carré 2 : ' + carre2);
+
+carre2.addEventListener('click', function() {
+
+    let posLeft = carre2.style.left;
+    let posTop = carre2.style.top;
+
+    console.log('Position left : ' + posLeft);
+    console.log('Position top : ' + posTop);
+
+    if( (posLeft == false || posLeft == '0px') && (posTop == false || posTop == '0px') ) {
+        carre2.style.left = '100px';
+    } else if(posTop == false || posTop == '0px') {
+        carre2.style.top = '100px';
+    } else if(posLeft == '100px' && posTop == '100px') {
+        carre2.style.left = 0;
+    } else {
+        carre2.style.top = 0;
+    }
+});
+ */
+
+
 let imagesBlock1 = document.querySelectorAll('#blockImage1 img');
 console.log(imagesBlock1);
 console.log(typeof imagesBlock1);
