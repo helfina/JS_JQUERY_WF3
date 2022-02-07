@@ -18,7 +18,7 @@ for(var i = 0; i < 100; i++) {
     } else {
         elementExercice3.innerHTML += i + ' ';
     }
-
+    
 }
 
 
@@ -32,7 +32,7 @@ for(var i = 0; i < 100; i++) {
     } else {
         elementExercice4.innerHTML += i + ' ';
     }
-
+    
 }
 
 elementExercice4.innerHTML += '<hr>';
@@ -44,7 +44,7 @@ for(var i = 0; i < 100; i++) {
     } else {
         elementExercice4.innerHTML += i + ' ';
     }
-
+    
 }
 
 elementExercice4.innerHTML += '<hr>';
@@ -60,3 +60,51 @@ while(i < 100) {
 
     i++;
 }
+
+
+
+// EXERCICE 6
+let tableauExo6 = '<table style="color: red;"><tr>';
+
+for(let i = 0; i < 10; i++) {
+    tableauExo6 += '<td>' + i + '</td>';
+}
+
+tableauExo6 += '</tr></table>';
+
+document.getElementById('exercice6').innerHTML += tableauExo6;
+
+
+// EXERCICE 7
+let tableauExo7 = '<table style="color: royalblue;">';
+let numero = 0;
+for(let y = 0; y < 10; y++) {
+    tableauExo7 += '<tr>';
+    for(let i = 0; i < 10; i++) {
+        // tableauExo7 += '<td>' + ((y * 10) + i) + '</td>';        
+        tableauExo7 += '<td>' + numero + '</td>';
+        numero++;        
+    }
+    tableauExo7 += '</tr>';
+}
+
+tableauExo7 += '</table>';
+
+document.getElementById('exercice7').innerHTML += tableauExo7;
+
+document.getElementById('exercice7').innerHTML += '<br><hr><br>';
+
+let tableauExo7b = '<table style="color: fuchsia;"><tr>';
+
+for(let i = 0; i < 100; i++) {
+
+    if(i%10 == 0 && i != 0) {
+        tableauExo7b += '</tr><tr>';
+    }
+
+    tableauExo7b += '<td>' + i + '</td>';
+}
+
+tableauExo7b += '</tr></table>';
+
+document.getElementById('exercice7').innerHTML += tableauExo7b;
